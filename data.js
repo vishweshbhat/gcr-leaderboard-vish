@@ -2,9 +2,9 @@ const csv = require("csv-parser");
 const fs = require("fs");
 const results = [];
 const resultsWithRank = [];
-const arcadeGames = "# of Arcade Games Completed",
-    triviaGames = "# of Trivia Games Completed",
-    labFreeCourses = "# of Lab-free Courses Completed";
+const arcadeGames = "no. of Arcade Games Completed",
+    triviaGames = "no. of Trivia Games Completed",
+    labFreeCourses = "no. of Lab-free Courses Completed";
 
 fs.createReadStream("data/data.csv")
   .pipe(csv())
@@ -28,7 +28,7 @@ fs.createReadStream("data/data.csv")
         (Number(a[arcadeGames]) +
           Number(a[triviaGames]) +
           Number(a[labFreeCourses])) ||
-        a["Student Name"] - b["Student Name"]
+        a["User Name"] - b["User Name"]
     );
 
     let rank = 1;
@@ -60,7 +60,7 @@ fs.createReadStream("data/data.csv")
     results.forEach((result) => {
       let obj = {
         Rank: result["Rank"],
-        "Student Name": result["Student Name"],
+        "User Name": result["User Name"], // Using "User Name" as the student's name field
         "# of Arcade Games Completed": result[arcadeGames],
         "# of Trivia Games Completed": result[triviaGames],
         "# of Lab-free Courses Completed": result[labFreeCourses],
