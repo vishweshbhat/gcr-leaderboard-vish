@@ -6,7 +6,7 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title className="mainHeading">GoogleCloudReady Facilitator Program Leaderboard</title>
+				<title className="mainHeading">Google Cloud Arcade Facilitator Program Leaderboard</title>
 				<meta name="viewport" content="width=device-width, initial-scale=0.1" />
 			</Head>
 			<div>
@@ -20,7 +20,7 @@ export default function Home() {
 						GoogleCloudReady Facilitator Program Leaderboard
 					</Typography>
 					<Typography className="collegeName bolder" variant="h4" color="textSecondary">
-						Jalpaiguri Government Engineering College
+						By Pratik and Vishwesh
 					</Typography>
 				</div>
 				<div className="logo">
