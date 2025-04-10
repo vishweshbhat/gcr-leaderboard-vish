@@ -2,9 +2,11 @@ const csv = require("csv-parser");
 const fs = require("fs");
 const results = [];
 const resultsWithRank = [];
-const arcadeGames = "no. of Arcade Games Completed",
-    triviaGames = "no. of Trivia Games Completed",
-    labFreeCourses = "no. of Lab-free Courses Completed";
+const skillBadges = "# of Skill Badges Completed",
+    arcadeGames = "# of Arcade Games Completed",
+    triviaGames = "# of Trivia Games Completed",
+    labFreeCourses = "# of Lab-free Courses Completed",
+    profileStatus = "Profile URL Status";
 
 fs.createReadStream("data/data.csv")
   .pipe(csv())
@@ -19,7 +21,7 @@ fs.createReadStream("data/data.csv")
       result.id = id++;
     });
 
-    // Sorting by number of arcade games, trivia games, and lab-free courses
+    // Sorting based on the number of completed arcade games, trivia games, and lab-free courses
     results.sort(
       (a, b) =>
         Number(b[arcadeGames]) +
@@ -56,11 +58,13 @@ fs.createReadStream("data/data.csv")
       }
     }
 
-    // Building the results with only the required fields
+    // Creating the result with the required fields
     results.forEach((result) => {
       let obj = {
         Rank: result["Rank"],
-        "User Name": result["User Name"], // Using "User Name" as the student's name field
+        "User Name": result["User Name"],
+        "Profile URL Status": result[profileStatus],
+        "# of Skill Badges Completed": result[skillBadges],
         "# of Arcade Games Completed": result[arcadeGames],
         "# of Trivia Games Completed": result[triviaGames],
         "# of Lab-free Courses Completed": result[labFreeCourses],
